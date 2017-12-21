@@ -60,11 +60,6 @@ public:
 			return (_pow(num1, num2 - int(num2)) * _pow(num1, int(num2)));
 	}
 
-	static double abs(double num)
-	{
-		return num >= 0 ? num : -num;
-	}
-
 };
 
 class Point {
