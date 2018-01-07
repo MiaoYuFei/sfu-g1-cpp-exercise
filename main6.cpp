@@ -7,11 +7,16 @@
 *
 *****************************************************************************/
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <iostream>
 using namespace std;
 
 int *change(int *matrix);
 void printMatrix(int **matrix);
+char* concat(char* ch1, char* ch2);
 int main() {
 	cout << "分别输入9个数。\n";
 	int tmpmatrix[9];
@@ -34,6 +39,13 @@ int main() {
 	}
 	printMatrix((int **)o_matrix);
 	cout << "------" << endl;
+	cout << "输入第一个字符串：" << endl;
+	char ch1[100];
+	cin >> ch1;
+	cout << "输入第二个字符串：" << endl;
+	char ch2[100];
+	cin >> ch2;
+	cout << concat(ch1, ch2) << endl;
 	cout << "分别输入10个数。" << endl;
 	int nums[10];
 	int max = 0, min = 0;
@@ -45,12 +57,12 @@ int main() {
 	for (size_t i = 1; i < 10; i++)
 	{
 		cin >> nums[i];
-		if (nums[i] > max) 
+		if (nums[i] > max)
 		{
 			max = nums[i];
 			imax = i;
 		}
-		else if (nums[i] < min) 
+		else if (nums[i] < min)
 		{
 			min = nums[i];
 			imin = i;
@@ -110,4 +122,16 @@ int *change(int *matrix) {
 		}
 	}
 	return (int *)&o_matrix;
+}
+
+char *concat(char* ch1, char* ch2) 
+{
+	string str1 = ch1;
+	string str2 = ch2;
+	string rtn = str1 + str2;
+	char* ch;
+	int len = rtn.length();
+	ch = new char[len];
+	strcpy(ch, rtn.c_str());
+	return ch;
 }
